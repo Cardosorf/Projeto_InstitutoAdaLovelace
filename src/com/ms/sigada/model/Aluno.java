@@ -1,5 +1,7 @@
 package com.ms.sigada.model;
 
-public class Aluno {
-
+public class Aluno extends Pessoa{
+	int a;
+	
+	
 }
