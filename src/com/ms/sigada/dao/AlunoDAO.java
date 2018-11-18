@@ -52,11 +52,11 @@ public class AlunoDAO {
 		return alunos.get( ID );
 	}
 	
-	/*
+	
 	public static Map<Integer, Aluno> consultaAlunos() {
 		return alunos;
 	}
-	*/
+	
 
 	public String remover( int ID ) {
 		Map<Integer, Aluno> map = new TreeMap<>();
@@ -75,8 +75,7 @@ public class AlunoDAO {
 	}
 	
 	
-	static Map<Integer, Aluno> leAlunos( String arquivo ) {
-		System.out.println(path);
+	private static Map<Integer, Aluno> leAlunos( String arquivo ) {
 		Map<Integer, Aluno> map = new TreeMap<>();
 		List<String> linhas;
 		try {
