@@ -71,7 +71,7 @@ public class LoginDAO {
 		return true;
 	}
 
-	public boolean getLogin(Login login) {
+	public boolean consultaLogin(String usuario) {
 		lerContas(path);
 		for (int i = 0; i < contas.size(); i++) {
 			if ((contas.get(i).getUsuario().compareTo(login.getUsuario()) == 0)
