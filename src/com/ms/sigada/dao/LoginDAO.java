@@ -16,7 +16,7 @@ public class LoginDAO {
 	static private ArrayList<Login> contas = new ArrayList<Login>();
 
 	static File file = new File("Aluno.txt");
-	static private String path = file.getAbsolutePath().replaceFirst("Aluno.txt", "src/com/ms/sigada/bd/Aluno.txt");
+	static private String path = file.getAbsolutePath().replaceFirst("Aluno.txt", "src/com/ms/sigada/bd/Contas.txt");
 
 	public LoginDAO() {
 		lerContas(path);
@@ -41,6 +41,10 @@ public class LoginDAO {
 		}
 
 	}
+	
+	public ArrayList<Login> consultaLogins(){
+		return contas;
+	}
 
 	private static void salvar(ArrayList<Login> logins) {
 		File arquivo = new File(path);
@@ -58,28 +62,8 @@ public class LoginDAO {
 			e.printStackTrace();
 		}
 	}
-
-	public boolean setLogin(Login login) {
-		for (int i = 0; i < contas.size(); i++) {
-			if ((contas.get(i).getUsuario().compareTo(login.getUsuario()) == 0)
-					&& (contas.get(i).getSenha() == login.getSenha())) {
-				return false;
-			}
-		}
-		contas.add(login);
-		salvar(contas);
-		return true;
+	
+	public void salvaLogins(ArrayList<Login> logins){
+		salvar(logins);
 	}
-
-	public boolean consultaLogin(String usuario) {
-		lerContas(path);
-		for (int i = 0; i < contas.size(); i++) {
-			if ((contas.get(i).getUsuario().compareTo(login.getUsuario()) == 0)
-					&& (contas.get(i).getSenha() == login.getSenha())) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 }
