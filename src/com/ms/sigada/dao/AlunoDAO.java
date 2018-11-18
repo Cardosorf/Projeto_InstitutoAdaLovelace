@@ -48,11 +48,6 @@ public class AlunoDAO {
 	}
 
 	
-	public static Aluno consultaAlunoPorID( int ID ) {
-		return alunos.get( ID );
-	}
-	
-	
 	public static Map<Integer, Aluno> consultaAlunos() {
 		return alunos;
 	}
@@ -73,7 +68,7 @@ public class AlunoDAO {
 		System.out.println( "Removido" );
 		return "./WEB-INF/ok.jsp";
 	}
-	
+
 	
 	private static Map<Integer, Aluno> leAlunos( String arquivo ) {
 		Map<Integer, Aluno> map = new TreeMap<>();
