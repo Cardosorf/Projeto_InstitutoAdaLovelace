@@ -1,0 +1,2 @@
+0|1|Maria|12345678912|10/05/1990|Ana Maria|Antonio Roberto|2112345678|null|Avenida das Voltas, 132. Sulacap|null
+1|1|Joao|23456789123|20/10/1994|Carlos Alberto|Dora Teles|2175649283|null|Rua das pracas, 12. Recreio|null
