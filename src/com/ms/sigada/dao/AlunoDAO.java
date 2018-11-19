@@ -29,7 +29,7 @@ public class AlunoDAO {
 	*/
 	
 	
-	public static void salvar( Map<Integer, Aluno> map ) {
+	public static boolean salvar( Map<Integer, Aluno> map ) {
 		try{
 			BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 			for(int user : map.keySet()) {
@@ -44,7 +44,9 @@ public class AlunoDAO {
 			alunos = leAlunos( path );   
 		} catch (IOException e) {
 			e.printStackTrace();
+			return false;
 		}
+		return true;
 	}
 
 	
