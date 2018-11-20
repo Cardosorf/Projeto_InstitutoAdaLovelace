@@ -17,12 +17,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Canvas;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.JComboBox;
 import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
 import java.awt.Button;
 import java.awt.Color;
+
+import com.ms.sigada.view.*;
 
 public class MenuRHForm extends JFrame {
 
@@ -86,14 +89,23 @@ public class MenuRHForm extends JFrame {
 		btnAluno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-              //  ManterAlunoForm page=new ManterAlunoForm());
-               // page.setVisible(true);
+                ManterAlunoForm page=new ManterAlunoForm(name);
+                page.setVisible(true);
 			}
 		});
 		btnAluno.setBounds(229, 144, 126, 41);
 		contentPane.add(btnAluno);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		  int dialogButton = JOptionPane.YES_NO_OPTION;
+          int dialogResult = JOptionPane.showConfirmDialog (null, "Tem certeza que quer sair?","Warning",dialogButton);
+          if(dialogResult == JOptionPane.YES_OPTION){
+                System.exit(0);
+              }
+		}
+	});
 		btnSair.setBounds(157, 209, 126, 41);
 		contentPane.add(btnSair);
 	}

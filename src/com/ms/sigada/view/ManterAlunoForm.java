@@ -1,6 +1,7 @@
 package com.ms.sigada.view;
 
 import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,16 +9,21 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Map;
+import java.util.TreeMap;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JToggleButton;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
+
+import com.ms.sigada.controller.*;
 
 public class ManterAlunoForm extends JFrame {
 
@@ -49,7 +55,7 @@ public class ManterAlunoForm extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ManterAlunoForm frame = new ManterAlunoForm();
+					ManterAlunoForm frame = new ManterAlunoForm("");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -61,7 +67,7 @@ public class ManterAlunoForm extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ManterAlunoForm() {
+	public ManterAlunoForm(String name) {
 		setResizable(false);
 		setTitle("Manter Aluno");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,7 +79,7 @@ public class ManterAlunoForm extends JFrame {
 		contentPane.setLayout(null);
 		
 		JTabbedPane btnVoltar = new JTabbedPane(JTabbedPane.TOP);
-		btnVoltar.setBounds(5, 5, 1264, 681);
+		btnVoltar.setBounds(5, 21, 1264, 665);
 		contentPane.add(btnVoltar);
 		
 		JPanel abaCadastrar = new JPanel();
@@ -182,6 +188,15 @@ public class ManterAlunoForm extends JFrame {
 		JButton btnSalvarCadastro = new JButton("Salvar");
 		btnSalvarCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				AlunoController cadastro = new AlunoController();
+				if(cadastro.cadastraAluno(0, txtNomeCompletoCadastro.getText(), txtDataDeNascimentoCadastro.getText(),
+						txtNomeResponsavel1Cadastro.getText(), txtNomeResponsavel2Cadastro.getText(), txtEndereco1Cadastro.getText(), txtEndereco2Cadastro.getText(),
+						txtTelefoneResponsavel1Cadastro.getText(), txtTelefoneResponsavel2Cadastro.getText(), txtCPFCadastro.getText())) {
+					JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso!");
+					limpaCampos();
+				}else {
+					JOptionPane.showMessageDialog(null, "Ocorreu um erro ao cadastrar!");
+				}
 			}
 		});
 		btnSalvarCadastro.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -191,6 +206,7 @@ public class ManterAlunoForm extends JFrame {
 		JButton btnLimparCadastro = new JButton("Limpar");
 		btnLimparCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				limpaCampos();
 			}
 		});
 		btnLimparCadastro.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -206,7 +222,7 @@ public class ManterAlunoForm extends JFrame {
 		lblSelecionarAlunoConsulta.setBounds(21, 40, 178, 28);
 		abaConsultar.add(lblSelecionarAlunoConsulta);
 		
-		JComboBox comboBoxConsultarAluno = new JComboBox();
+		JComboBox<String> comboBoxConsultarAluno = new JComboBox<String>();
 		comboBoxConsultarAluno.setBounds(209, 43, 235, 28);
 		abaConsultar.add(comboBoxConsultarAluno);
 		
@@ -315,12 +331,41 @@ public class ManterAlunoForm extends JFrame {
 		abaConsultar.add(btnSalvarConsulta);
 		
 		JButton btnLimparConsulta = new JButton("Limpar");
-		btnLimparConsulta.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnLimparConsulta.setBounds(606, 603, 138, 39);
-		abaConsultar.add(btnLimparConsulta);
-		
-		JButton btnNewButton = new JButton("Voltar");
-		btnNewButton.setBounds(1180, 0, 89, 23);
-		contentPane.add(btnNewButton);
+        btnLimparConsulta.setFont(new Font("Tahoma", Font.BOLD, 18));
+        btnLimparConsulta.setBounds(606, 603, 138, 39);
+        abaConsultar.add(btnLimparConsulta);
+
+        JButton btnNewButton = new JButton("Voltar");
+        btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent arg0) {
+				dispose();
+                MenuRHForm page=new MenuRHForm(name);
+                page.setVisible(true);
+            }
+        });
+        btnNewButton.setBounds(1180, 0, 89, 23);
+        contentPane.add(btnNewButton);
+        
+        AlunoController controller = new AlunoController();
+        Map<Integer, String> alunos = new TreeMap<>();
+        alunos = controller.consultaTodosAlunos();
+        for(Integer user : alunos.keySet()) {
+        	comboBoxConsultarAluno.addItem(alunos.get(user));
+        	System.out.println(alunos.get(user));
+        }
+	
+	
 	}
+	
+	public void limpaCampos(){
+		txtNomeCompletoCadastro.setText("");
+		txtDataDeNascimentoCadastro.setText("");
+		txtTelefoneResponsavel1Cadastro.setText("");
+		txtTelefoneResponsavel2Cadastro.setText("");
+		txtNomeResponsavel1Cadastro.setText("");
+		txtNomeResponsavel2Cadastro.setText("");
+		txtEndereco1Cadastro.setText("");
+		txtEndereco2Cadastro.setText("");
+		txtCPFCadastro.setText("");		
+		}
 }

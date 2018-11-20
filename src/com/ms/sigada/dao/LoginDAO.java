@@ -15,8 +15,8 @@ import com.ms.sigada.model.Login;
 public class LoginDAO {
 	static private ArrayList<Login> contas = new ArrayList<Login>();
 
-	static File file = new File("Aluno.txt");
-	static private String path = file.getAbsolutePath().replaceFirst("Aluno.txt", "src/com/ms/sigada/bd/Contas.txt");
+	static File file = new File("Contas.txt");
+	static private String path = file.getAbsolutePath().replaceFirst("Contas.txt", "src/com/ms/sigada/bd/Contas.txt");
 
 	public LoginDAO() {
 		lerContas(path);

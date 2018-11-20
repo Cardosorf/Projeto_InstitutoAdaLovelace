@@ -26,7 +26,8 @@ public class AlunoController {
 		}else {
 			novoAluno.setMatricula(matricula);
 		}
-
+		
+		novoAluno.setIDRefeitorio(1);
 		novoAluno.setNome(nome);
 		novoAluno.setCPF(cpf);
 		novoAluno.setDataDeNascimento(dataNasc);
@@ -46,10 +47,10 @@ public class AlunoController {
 		return false;
 	}
 	
-	public Map<String, Integer> consultaTodosAlunos(){
-		Map<String, Integer> nomesMatriculasAlunos = new TreeMap<>();
+	public Map<Integer, String> consultaTodosAlunos(){
+		Map<Integer, String> nomesMatriculasAlunos = new TreeMap<>();
 		for(int matricula : alunos.keySet()) {
-			nomesMatriculasAlunos.put(alunos.get(matricula)+" - "+matricula, matricula);
+			nomesMatriculasAlunos.put(matricula,alunos.get(matricula).getNome()+" - "+matricula);
 		}
 		return nomesMatriculasAlunos;
 	}

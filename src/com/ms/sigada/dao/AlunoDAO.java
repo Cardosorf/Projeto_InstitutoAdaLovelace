@@ -34,9 +34,10 @@ public class AlunoDAO {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(path));
 			for(int user : map.keySet()) {
 				writer.write( map.get(user).getMatricula()+ "|" + map.get(user).getIDRefeitorio()+ "|" 
-						+ map.get(user).getNome() + "|" + map.get(user).getCPF() + "|" + map.get(user).getDataDeNascimento() 
+						+ map.get(user).getNome() + "|" + map.get(user).getCPF() + "|" + map.get(user).getDataDeNascimento() + "|" 
 						+ map.get(user).getNomeResponsavel1() + "|" + map.get(user).getNomeResponsavel2() + "|"
-						+ map.get(user).getTelefoneResponsavel1() + "|" + map.get(user).getTelefoneResponsavel2()
+						+ map.get(user).getTelefoneResponsavel1() + "|" + map.get(user).getTelefoneResponsavel2() + "|"
+						+ map.get(user).getEndereco1() + "|" + map.get(user).getEndereco2()
 						);
 				writer.newLine();
 			}
