@@ -77,7 +77,7 @@ public class AlunoDAO {
 		Map<Integer, Aluno> map = new TreeMap<>();
 		List<String> linhas;
 		try {
-			linhas = Files.readAllLines( Paths.get( arquivo ), Charset.forName( "UTF8" ) );
+			linhas = Files.readAllLines( Paths.get( arquivo ), Charset.forName( "ISO-8859-1" ) );
 			for( String linha : linhas ) {
 				String w[] = linha.split( "[|]" );
 				

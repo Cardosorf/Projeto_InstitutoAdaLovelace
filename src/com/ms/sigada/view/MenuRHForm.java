@@ -53,7 +53,7 @@ public class MenuRHForm extends JFrame {
 	public MenuRHForm(String name) {
 		setTitle("Menu RH");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 20, 1400, 800);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 0, 102));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -63,18 +63,19 @@ public class MenuRHForm extends JFrame {
 		JLabel lblNewLabel = new JLabel("Bem-vindo");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel.setBounds(10, 33, 414, 41);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
+		lblNewLabel.setBounds(477, 196, 414, 41);
 		contentPane.add(lblNewLabel);
 		
 		JLabel userName = new JLabel(name);
 		userName.setForeground(new Color(255, 255, 255));
 		userName.setHorizontalAlignment(SwingConstants.CENTER);
-		userName.setFont(new Font("Tahoma", Font.BOLD, 20));
-		userName.setBounds(10, 85, 414, 41);
+		userName.setFont(new Font("Tahoma", Font.BOLD, 30));
+		userName.setBounds(477, 290, 414, 41);
 		contentPane.add(userName);
 		
 		JButton btnFuncionario = new JButton("Funcion\u00E1rio");
+		btnFuncionario.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnFuncionario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -82,10 +83,11 @@ public class MenuRHForm extends JFrame {
 				
 			}
 		});
-		btnFuncionario.setBounds(78, 144, 126, 41);
+		btnFuncionario.setBounds(489, 416, 180, 54);
 		contentPane.add(btnFuncionario);
 		
 		JButton btnAluno = new JButton("Aluno");
+		btnAluno.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnAluno.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -93,10 +95,11 @@ public class MenuRHForm extends JFrame {
                 page.setVisible(true);
 			}
 		});
-		btnAluno.setBounds(229, 144, 126, 41);
+		btnAluno.setBounds(696, 416, 180, 54);
 		contentPane.add(btnAluno);
 		
 		JButton btnSair = new JButton("Sair");
+		btnSair.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnSair.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 		  int dialogButton = JOptionPane.YES_NO_OPTION;
@@ -106,7 +109,7 @@ public class MenuRHForm extends JFrame {
               }
 		}
 	});
-		btnSair.setBounds(157, 209, 126, 41);
+		btnSair.setBounds(587, 498, 182, 54);
 		contentPane.add(btnSair);
 	}
 }
