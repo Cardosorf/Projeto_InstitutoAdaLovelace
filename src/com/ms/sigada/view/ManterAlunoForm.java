@@ -53,7 +53,7 @@ public class ManterAlunoForm extends JFrame {
 	private JTextField txtNomeResponsavel2Consulta;
 	private JTextField txtTelefoneResponsavel1Consulta;
 	private JTextField txtEndereco1Consulta;
-	private JTextField txtTelefoneResponsavel2;
+	private JTextField txtTelefoneResponsavel2Consulta;
 	private JTextField txtEndereco2Consulta;
 
 	static Point compCoords;
@@ -326,7 +326,7 @@ public class ManterAlunoForm extends JFrame {
 					txtNomeResponsavel1Consulta.setText(aluno.getNomeResponsavel1());
 					txtNomeResponsavel2Consulta.setText(aluno.getNomeResponsavel2());
 					txtTelefoneResponsavel1Consulta.setText(aluno.getTelefoneResponsavel1());
-					txtTelefoneResponsavel2.setText(aluno.getTelefoneResponsavel2());
+					txtTelefoneResponsavel2Consulta.setText(aluno.getTelefoneResponsavel2());
 					txtEndereco1Consulta.setText(aluno.getEndereco1());
 					txtEndereco2Consulta.setText(aluno.getEndereco2());
 				}
@@ -411,11 +411,11 @@ public class ManterAlunoForm extends JFrame {
 		txtTelefoneResponsavel1Consulta.setBounds(20, 422, 605, 43);
 		abaConsultar.add(txtTelefoneResponsavel1Consulta);
 
-		txtTelefoneResponsavel2 = new JTextField();
-		txtTelefoneResponsavel2.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		txtTelefoneResponsavel2.setColumns(10);
-		txtTelefoneResponsavel2.setBounds(714, 422, 612, 43);
-		abaConsultar.add(txtTelefoneResponsavel2);
+		txtTelefoneResponsavel2Consulta = new JTextField();
+		txtTelefoneResponsavel2Consulta.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		txtTelefoneResponsavel2Consulta.setColumns(10);
+		txtTelefoneResponsavel2Consulta.setBounds(714, 422, 612, 43);
+		abaConsultar.add(txtTelefoneResponsavel2Consulta);
 
 		txtEndereco1Consulta = new JTextField();
 		txtEndereco1Consulta.setFont(new Font("Tahoma", Font.PLAIN, 30));
@@ -438,6 +438,36 @@ public class ManterAlunoForm extends JFrame {
 		btnSalvarConsulta.setIcon(new ImageIcon(path));
 		btnSalvarConsulta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				AlunoController cadastro = new AlunoController();
+
+				if (verificaCamposNulosConsultar()) {
+					return;
+				}
+
+				else {
+					Object matricula = comboBoxConsultarAluno.getSelectedItem();
+					String temp = matricula.toString();
+					System.out.println(matricula);
+					String[] parts = temp.split("- ");
+					temp = parts[1];
+					System.out.println(temp);
+				if (cadastro.alteraAluno(Integer.parseInt(temp), txtNomeCompletoConsulta.getText(),
+							txtDataDeNascimentoConsulta.getText(), txtNomeResponsavel1Consulta.getText(),
+							txtNomeResponsavel2Consulta.getText(), txtEndereco1Consulta.getText(),
+							txtEndereco2Consulta.getText(), txtTelefoneResponsavel1Consulta.getText(),
+							txtTelefoneResponsavel2Consulta.getText(), txtCPFConsulta.getText())) {
+						JOptionPane.showMessageDialog(null, "Aluno editado com sucesso!");
+						limpaCampos();
+
+						comboBoxConsultarAluno.removeAllItems();
+						atualizaComboBox(comboBoxConsultarAluno);
+					} else {
+						JOptionPane.showMessageDialog(null, "Ocorreu um erro ao editar!");
+					}
+				}
+				
+				
 			}
 		});
 		btnSalvarConsulta.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -625,7 +655,7 @@ public class ManterAlunoForm extends JFrame {
 		txtNomeResponsavel1Consulta.setText("");
 		txtNomeResponsavel2Consulta.setText("");
 		txtTelefoneResponsavel1Consulta.setText("");
-		txtTelefoneResponsavel2.setText("");
+		txtTelefoneResponsavel2Consulta.setText("");
 		txtEndereco1Consulta.setText("");
 		txtEndereco2Consulta.setText("");
 	}
@@ -644,32 +674,103 @@ public class ManterAlunoForm extends JFrame {
 		}
 
 		else if (txtNomeResponsavel1Cadastro.getText().equals("")) {
-			JOptionPane.showMessageDialog(new JFrame(), "Campo Nome Respons�vel se encontra vazio", "Erro",
+			JOptionPane.showMessageDialog(new JFrame(), "Campo Nome Responsável se encontra vazio", "Erro",
 					JOptionPane.ERROR_MESSAGE);
 			return true;
 		}
 
 		else if (txtEndereco1Cadastro.getText().equals("")) {
-			JOptionPane.showMessageDialog(new JFrame(), "Campo Endere�o 1 se encontra vazio", "Erro",
+			JOptionPane.showMessageDialog(new JFrame(), "Campo Endereço 1 se encontra vazio", "Erro",
 					JOptionPane.ERROR_MESSAGE);
 			return true;
 		}
 
 		else if (txtTelefoneResponsavel1Cadastro.getText().equals("")) {
-			JOptionPane.showMessageDialog(new JFrame(), "Campo Telefone Respons�vel 1 se encontra vazio", "Erro",
+			JOptionPane.showMessageDialog(new JFrame(), "Campo Telefone Responsável 1 se encontra vazio", "Erro",
 					JOptionPane.ERROR_MESSAGE);
 			return true;
 		}
 
 		else if (txtCPFCadastro.getText().equals("")) {
-			JOptionPane.showMessageDialog(new JFrame(), "Campo Telefone Respons�vel 1 se encontra vazio", "Erro",
+			JOptionPane.showMessageDialog(new JFrame(), "Campo Telefone Responsável 1 se encontra vazio", "Erro",
+					JOptionPane.ERROR_MESSAGE);
+			return true;
+		}	
+
+		else {
+			if (txtEndereco2Cadastro.getText().equals("")) {
+				txtEndereco2Cadastro.setText("-");
+			}
+			if (txtTelefoneResponsavel2Cadastro.getText().equals("")) {
+				txtTelefoneResponsavel2Cadastro.setText("-");
+			}
+			if (txtNomeResponsavel2Cadastro.getText().equals("")) {
+				txtNomeResponsavel2Cadastro.setText("-");
+			}
+			
+			return false;
+		}
+		
+		
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	private boolean verificaCamposNulosConsultar() {
+		if (txtNomeCompletoConsulta.getText().equals("")) {
+			JOptionPane.showMessageDialog(new JFrame(), "Campo Nome Completo se encontra vazio", "Erro",
+					JOptionPane.ERROR_MESSAGE);
+			return true;
+		}
+
+		else if (txtDataDeNascimentoConsulta.getText().equals("")) {
+			JOptionPane.showMessageDialog(new JFrame(), "Campo Data de Nascimento se encontra vazio", "Erro",
+					JOptionPane.ERROR_MESSAGE);
+			return true;
+		}
+
+		else if (txtNomeResponsavel1Consulta.getText().equals("")) {
+			JOptionPane.showMessageDialog(new JFrame(), "Campo Nome Responsável se encontra vazio", "Erro",
+					JOptionPane.ERROR_MESSAGE);
+			return true;
+		}
+
+		else if (txtEndereco1Consulta.getText().equals("")) {
+			JOptionPane.showMessageDialog(new JFrame(), "Campo Endereço 1 se encontra vazio", "Erro",
+					JOptionPane.ERROR_MESSAGE);
+			return true;
+		}
+
+		else if (txtTelefoneResponsavel1Consulta.getText().equals("")) {
+			JOptionPane.showMessageDialog(new JFrame(), "Campo Telefone Responsável 1 se encontra vazio", "Erro",
+					JOptionPane.ERROR_MESSAGE);
+			return true;
+		}
+
+		else if (txtCPFConsulta.getText().equals("")) {
+			JOptionPane.showMessageDialog(new JFrame(), "Campo Telefone Responsável 1 se encontra vazio", "Erro",
 					JOptionPane.ERROR_MESSAGE);
 			return true;
 		}
 
 		else {
+			if (txtEndereco2Consulta.getText().equals("")) {
+				txtEndereco2Consulta.setText("-");
+			}
+			if (txtTelefoneResponsavel2Consulta.getText().equals("")) {
+				txtTelefoneResponsavel2Consulta.setText("-");
+			}
+			if (txtNomeResponsavel2Consulta.getText().equals("")) {
+				txtNomeResponsavel2Consulta.setText("-");
+			}
 			return false;
 		}
 
 	}
+
 }
