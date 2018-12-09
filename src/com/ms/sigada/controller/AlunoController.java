@@ -3,8 +3,8 @@ package com.ms.sigada.controller;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.ms.sigada.dao.AlunoDAO;
 import com.ms.sigada.model.Aluno;
+import com.ms.sigada.model.AlunoDAO;
 
 public class AlunoController {
 	 private Map<Integer, Aluno> alunos = new TreeMap<>();

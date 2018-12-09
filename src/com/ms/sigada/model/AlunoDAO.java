@@ -1,4 +1,4 @@
-package com.ms.sigada.dao;
+package com.ms.sigada.model;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 import java.io.BufferedWriter;
-import com.ms.sigada.model.Aluno;
 
 
 public class AlunoDAO {

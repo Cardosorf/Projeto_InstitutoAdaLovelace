@@ -2,8 +2,8 @@ package com.ms.sigada.controller;
 
 import java.util.ArrayList;
 
-import com.ms.sigada.dao.LoginDAO;
 import com.ms.sigada.model.Login;
+import com.ms.sigada.model.LoginDAO;
 
 public class LoginController {
 	static private LoginDAO loginsdao = new LoginDAO();

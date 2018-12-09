@@ -1,4 +1,4 @@
-package com.ms.sigada.dao;
+package com.ms.sigada.model;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -9,8 +9,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.ms.sigada.model.Login;
 
 public class LoginDAO {
 	static private ArrayList<Login> contas = new ArrayList<Login>();

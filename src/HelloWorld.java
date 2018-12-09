@@ -1,5 +1,5 @@
-import com.ms.sigada.dao.AlunoDAO;
 import com.ms.sigada.model.Aluno;
+import com.ms.sigada.model.AlunoDAO;
 
 public class HelloWorld {
 

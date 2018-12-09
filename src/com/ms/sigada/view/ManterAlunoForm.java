@@ -351,7 +351,7 @@ public class ManterAlunoForm extends JFrame {
 				}
 
 				if(!verifyCPF(txtCPFCadastro.getText())) {
-					JOptionPane.showMessageDialog(null, "CPF inválido!");
+					JOptionPane.showMessageDialog(null, "CPF invï¿½lido!");
 					return;
 				}
 				
@@ -454,7 +454,7 @@ public class ManterAlunoForm extends JFrame {
 				}
 				
 				if(!verifyCPF(txtCPFConsulta.getText())) {
-					JOptionPane.showMessageDialog(null, "CPF inválido!");
+					JOptionPane.showMessageDialog(null, "CPF invï¿½lido!");
 					return;
 				}
 
@@ -608,7 +608,7 @@ public class ManterAlunoForm extends JFrame {
 		JButton btnDeletarColsulta = new JButton("");
 		btnDeletarColsulta.setMargin(new Insets(0, 0, 0, 0));
 		btnDeletarColsulta.setBorderPainted(false);
-		nomeArq = "btnDeletar.jpg";
+		nomeArq = "btndeletar.jpg";
 		file1 = new File(nomeArq);
 		path = file1.getAbsolutePath().replaceFirst(nomeArq, "sigAdaForms/" + nomeArq);
 
@@ -656,7 +656,7 @@ public class ManterAlunoForm extends JFrame {
 							atualizaComboBox(comboBoxConsultarAluno);
 						}
 						else{
-							JOptionPane.showMessageDialog(new JFrame(), "Não foi possível remover o aluno selecionado.", "Erro",
+							JOptionPane.showMessageDialog(new JFrame(), "Nï¿½o foi possï¿½vel remover o aluno selecionado.", "Erro",
 					JOptionPane.ERROR_MESSAGE);
 						}
 					}
