@@ -1,7 +1,7 @@
 1|1|Joao|23456789123|20/10/1994|Carlos Alberto|Dora Teles|2175649283|sdgf|Rua das pracas, 12. Recreio|nusdgsdfbvsdfbvll
-2|1|DuDA|13736017790|32/69/9865|548548661|ADSSDBV|548548661|64554|SACFASCVS|SVSDV
-3|1|Tain· da Silva Lima|12312312|19/05/1998|Aldelice|Berilo|123123123|6463455242|Avenida dos Barracos, 2. Centro.|Highlight Express, 42. Barra.
-4|1|TestÈ|123123123|21/08/2000|JuÁara|Juca|12352453248|657645323|Rua dos testes, 2. Testy.|Rua das Pombas, 2. PombolÛide.
+2|1|DuDA|98645329780|32/69/9865|548548661|ADSSDBV|548548661|64554|SACFASCVS|SVSDV
+3|1|Tain√° da Silva Lima|12312312|19/05/1998|Aldelice|Berilo|123123123|6463455242|Avenida dos Barracos, 2. Centro.|Highlight Express, 42. Barra.
+4|1|Test√©|123123123|21/08/2000|Ju√ßara|Juca|12352453248|657645323|Rua dos testes, 2. Testy.|Rua das Pombas, 2. Pombol√≥ide.
 5|1|131231|23131231|2312312312|3123123|12312312312|3123123|12312312|3123123123|123123213
 6|1|asdasdasda|sdasdasdasd|asdasdasd|sadsadsad|asdasdsad|asdsadsad|asdsadsadas|sadasdasdasdsa|dsadsadasd
 7|1|aaaaaaaaaaa|aaaaaaaaaaaaaaaaaa|aaaaaaaaaaaaaaaaaaaaa|aaaaaaaaaaaaaaaaa|aaaaaaaaaaaaaaaaaaa|aaaaaaaaaaaaaaaaaaa|aaaaaaaaaaaaaaaa|aaaaaaaaaaaaaaaaaa|aaaaaaaaaaaaaaaaaaa
