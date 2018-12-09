@@ -350,7 +350,13 @@ public class ManterAlunoForm extends JFrame {
 					return;
 				}
 
+				if(!verifyCPF(txtCPFCadastro.getText())) {
+					JOptionPane.showMessageDialog(null, "CPF inválido!");
+					return;
+				}
+				
 				else {
+					
 					if (cadastro.cadastraAluno(0, txtNomeCompletoCadastro.getText(),
 							txtDataDeNascimentoCadastro.getText(), txtNomeResponsavel1Cadastro.getText(),
 							txtNomeResponsavel2Cadastro.getText(), txtEndereco1Cadastro.getText(),
@@ -361,7 +367,9 @@ public class ManterAlunoForm extends JFrame {
 
 						comboBoxConsultarAluno.removeAllItems();
 						atualizaComboBox(comboBoxConsultarAluno);
-					} else {
+					}
+
+					else {
 						JOptionPane.showMessageDialog(null, "Ocorreu um erro ao cadastrar!");
 					}
 				}
@@ -444,6 +452,11 @@ public class ManterAlunoForm extends JFrame {
 				if (verificaCamposNulosConsultar()) {
 					return;
 				}
+				
+				if(!verifyCPF(txtCPFConsulta.getText())) {
+					JOptionPane.showMessageDialog(null, "CPF inválido!");
+					return;
+				}
 
 				else {
 					Object matricula = comboBoxConsultarAluno.getSelectedItem();
@@ -452,6 +465,7 @@ public class ManterAlunoForm extends JFrame {
 					String[] parts = temp.split("- ");
 					temp = parts[1];
 					System.out.println(temp);
+
 				if (cadastro.alteraAluno(Integer.parseInt(temp), txtNomeCompletoConsulta.getText(),
 							txtDataDeNascimentoConsulta.getText(), txtNomeResponsavel1Consulta.getText(),
 							txtNomeResponsavel2Consulta.getText(), txtEndereco1Consulta.getText(),
@@ -462,7 +476,10 @@ public class ManterAlunoForm extends JFrame {
 
 						comboBoxConsultarAluno.removeAllItems();
 						atualizaComboBox(comboBoxConsultarAluno);
-					} else {
+					}
+				
+
+				else {
 						JOptionPane.showMessageDialog(null, "Ocorreu um erro ao editar!");
 					}
 				}
@@ -471,7 +488,7 @@ public class ManterAlunoForm extends JFrame {
 			}
 		});
 		btnSalvarConsulta.setFont(new Font("Tahoma", Font.BOLD, 18));
-		btnSalvarConsulta.setBounds(512, 621, 155, 51);
+		btnSalvarConsulta.setBounds(421, 621, 155, 51);
 		abaConsultar.add(btnSalvarConsulta);
 
 		JButton btnLimparConsulta = new JButton("");
@@ -487,7 +504,7 @@ public class ManterAlunoForm extends JFrame {
 		});
 		btnLimparConsulta.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnLimparConsulta.setBorderPainted(false);
-		btnLimparConsulta.setBounds(677, 621, 155, 51);
+		btnLimparConsulta.setBounds(586, 621, 155, 51);
 		abaConsultar.add(btnLimparConsulta);
 
 		JButton btnVoltar = new JButton("");
@@ -587,6 +604,73 @@ public class ManterAlunoForm extends JFrame {
 		label_8.setBounds(710, 486, 168, 37);
 		abaConsultar.add(label_8);
 
+
+		JButton btnDeletarColsulta = new JButton("");
+		btnDeletarColsulta.setMargin(new Insets(0, 0, 0, 0));
+		btnDeletarColsulta.setBorderPainted(false);
+		nomeArq = "btnDeletar.jpg";
+		file1 = new File(nomeArq);
+		path = file1.getAbsolutePath().replaceFirst(nomeArq, "sigAdaForms/" + nomeArq);
+
+		
+		btnDeletarColsulta.setIcon(new ImageIcon(path));
+		
+		btnDeletarColsulta.setFont(new Font("Tahoma", Font.BOLD, 18));
+		
+		btnDeletarColsulta.setBounds(755, 621, 155, 51);
+		abaConsultar.add(btnDeletarColsulta);
+
+
+		btnDeletarColsulta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nomeConsulta = txtNomeCompletoConsulta.getText();
+				String cpfConsulta = txtCPFConsulta.getText();
+				String dataNascConsulta = txtDataDeNascimentoConsulta.getText();
+				String nomeResp1Consulta = txtNomeResponsavel1Consulta.getText();
+				String nomeResp2Consulta = txtNomeResponsavel2Consulta .getText();
+				String telResp1Consulta = txtTelefoneResponsavel1Consulta.getText();
+				String telResp2Consulta = txtTelefoneResponsavel1Consulta.getText();
+				String end1Consulta = txtEndereco1Consulta.getText();
+				String end2Consulta = txtEndereco2Consulta.getText();
+
+				
+				if( nomeConsulta.equals("") || cpfConsulta.equals("") || dataNascConsulta.equals("") || nomeResp1Consulta.equals("") || 
+				 telResp1Consulta.equals("") || end1Consulta.equals("")){
+					JOptionPane.showMessageDialog(new JFrame(), "Nenhum aluno foi selecionado. Por favor, selecione um aluno.", "Erro",
+					JOptionPane.ERROR_MESSAGE);
+				}
+				else{
+					AlunoController control = new AlunoController();
+					String dadosAluno[] = comboBoxConsultarAluno.getSelectedItem().toString().split("- ");
+
+					int dialogButton = JOptionPane.YES_NO_OPTION;
+					int dialogResult = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja deletar o aluno " + nomeConsulta + " ?", "Warning",
+					dialogButton);
+					
+					if (dialogResult == JOptionPane.YES_OPTION) {
+						if(control.removeAluno(Integer.parseInt(dadosAluno[1]))){
+							System.out.println(dadosAluno[1] + " oiii");
+							JOptionPane.showMessageDialog(null, "O aluno "+nomeConsulta+" foi removido com sucesso!");
+							limpaCampos();
+							comboBoxConsultarAluno.removeAllItems();
+							atualizaComboBox(comboBoxConsultarAluno);
+						}
+						else{
+							JOptionPane.showMessageDialog(new JFrame(), "Não foi possível remover o aluno selecionado.", "Erro",
+					JOptionPane.ERROR_MESSAGE);
+						}
+					}
+				
+				}
+			
+		}
+});
+		
+		
+		
+		
+		
+		
 		JLabel imagem = new JLabel("");
 		file1 = new File("4.png");
 		path = file1.getAbsolutePath().replaceFirst("4.png", "sigAdaForms/4.png");
@@ -594,6 +678,7 @@ public class ManterAlunoForm extends JFrame {
 		imagem.setBounds(0, 0, 1400, 800);
 		contentPane.add(imagem);
 
+		
 		compCoords = null;
 		contentPane.addMouseListener(new MouseListener() {
 			public void mouseReleased(MouseEvent e) {
@@ -716,7 +801,48 @@ public class ManterAlunoForm extends JFrame {
 	}
 	
 	
+	private boolean verifyCPF(String cpf) {
+		int firstDigitValidity = 0;
+		int secondDigitValidity = 0;
+		int firstFactor = 10;
+		int secondFactor = 11;
+
+		if(cpf.length() < 11 || cpf.length() > 11) {
+			return false;
+		}
+		
+		
+		for (char x : cpf.toCharArray()) {
+			firstDigitValidity += Integer.parseInt(String.valueOf(x))*firstFactor;
+			firstFactor--;
+			if(firstFactor == 1)
+				break;
+		}
+		
+		for (char x : cpf.toCharArray()) {
+			secondDigitValidity += Integer.parseInt(String.valueOf(x))*secondFactor;
+			secondFactor--;
+			if(secondFactor == 1)
+				break;
+		}
+		
+		
+		firstDigitValidity = 11 - (firstDigitValidity % 11);
+		secondDigitValidity = 11 - (secondDigitValidity % 11);
 	
+		if(firstDigitValidity > 9)
+			firstDigitValidity = 0;
+		
+		if(secondDigitValidity > 9)
+			secondDigitValidity = 0;
+
+		if(firstDigitValidity == Character.getNumericValue(cpf.charAt(9)) && secondDigitValidity == Character.getNumericValue(cpf.charAt(10))) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 	
 	
 	
@@ -772,5 +898,4 @@ public class ManterAlunoForm extends JFrame {
 		}
 
 	}
-
 }

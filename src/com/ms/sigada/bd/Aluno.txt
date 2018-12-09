@@ -1,6 +1,5 @@
-0|1|Maria|12345678912|10/05/1990|Ana Maria|Antonio Roberto|2112345678|sdgvdsgs|Avenida das Voltas, 132. Sulacap|nusdgdsgll
 1|1|Joao|23456789123|20/10/1994|Carlos Alberto|Dora Teles|2175649283|sdgf|Rua das pracas, 12. Recreio|nusdgsdfbvsdfbvll
-2|1|DuDA|87654812|32/69/9865|548548661|ADSSDBV|548548661|64554|SACFASCVS|SVSDV
+2|1|DuDA|13736017790|32/69/9865|548548661|ADSSDBV|548548661|64554|SACFASCVS|SVSDV
 3|1|Tainá da Silva Lima|12312312|19/05/1998|Aldelice|Berilo|123123123|6463455242|Avenida dos Barracos, 2. Centro.|Highlight Express, 42. Barra.
 4|1|Testé|123123123|21/08/2000|Juçara|Juca|12352453248|657645323|Rua dos testes, 2. Testy.|Rua das Pombas, 2. Pombolóide.
 5|1|131231|23131231|2312312312|3123123|12312312312|3123123|12312312|3123123123|123123213
@@ -11,3 +10,4 @@
 10|1|1|1|1|2|3|1|1|1|1
 11|1|teste tyes|456456456|asv|afsasdc|asdvcdas|asvdsa|sdav|sdv|sdv
 12|1|asc|ascv|asc|asc|asc|asc|asc|cas|asc
+13|1|adasdasd|13736017790|12/123/123123|asdasdasd|asdasdsadasdasd|asdasda|sdasdasdasdasd|asdasasdas|dasdasdasd

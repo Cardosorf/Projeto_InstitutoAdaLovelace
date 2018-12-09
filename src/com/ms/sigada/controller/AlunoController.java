@@ -69,9 +69,55 @@ public class AlunoController {
 	
 	public boolean alteraAluno(int matricula, String nome, String dataNasc, String nomeRes1, String nomeRes2, String end1, String end2, String tel1, String tel2, String cpf) {
 		removeAluno(matricula);
-		if(cadastraAluno(matricula, nome, dataNasc, nomeRes1, nomeRes2, end1, end2, tel1, tel2, cpf)) {
+		
+		if(verifyCPF(cpf) && cadastraAluno(matricula, nome, dataNasc, nomeRes1, nomeRes2, end1, end2, tel1, tel2, cpf)) {
 			return true;
 		}
 		return false;
+		
+	}
+
+	
+	private boolean verifyCPF(String cpf) {
+		int firstDigitValidity = 0;
+		int secondDigitValidity = 0;
+		int firstFactor = 10;
+		int secondFactor = 11;
+
+		if(cpf.length() < 11 || cpf.length() > 11) {
+			return false;
+		}
+		
+		
+		for (char x : cpf.toCharArray()) {
+			firstDigitValidity += Integer.parseInt(String.valueOf(x))*firstFactor;
+			firstFactor--;
+			if(firstFactor == 1)
+				break;
+		}
+		
+		for (char x : cpf.toCharArray()) {
+			secondDigitValidity += Integer.parseInt(String.valueOf(x))*secondFactor;
+			secondFactor--;
+			if(secondFactor == 1)
+				break;
+		}
+		
+		
+		firstDigitValidity = 11 - (firstDigitValidity % 11);
+		secondDigitValidity = 11 - (secondDigitValidity % 11);
+	
+		if(firstDigitValidity > 9)
+			firstDigitValidity = 0;
+		
+		if(secondDigitValidity > 9)
+			secondDigitValidity = 0;
+
+		if(firstDigitValidity == Character.getNumericValue(cpf.charAt(9)) && secondDigitValidity == Character.getNumericValue(cpf.charAt(10))) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }

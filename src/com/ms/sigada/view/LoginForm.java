@@ -41,6 +41,9 @@ public class LoginForm extends JFrame {
 	static File file1 = new File("1.png");
 	static private String path = file1.getAbsolutePath().replaceFirst("1.png", "sigAdaForms/1.png");
     
+	private double tx = 1;
+	private double ty = 1;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -65,7 +68,7 @@ public class LoginForm extends JFrame {
 		setBackground(Color.GRAY);
 		setTitle("Tela Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 20, 1384, 761);
+		setBounds(100, 20, (int)Math.abs(1384*tx), (int)Math.abs(761*ty));
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 0, 102));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -96,7 +99,7 @@ public class LoginForm extends JFrame {
 		
 		textNome = new JTextField();
 		textNome.setFont(new Font("Tahoma", Font.BOLD, 25));
-		textNome.setBounds(792, 255, 564, 50);
+		textNome.setBounds(792, 255, (int)Math.abs(564*tx), (int)Math.abs(50*ty));
 		contentPane.add(textNome);
 		textNome.setColumns(10);
 
@@ -120,9 +123,9 @@ public class LoginForm extends JFrame {
 			}
 		});
 		textSenha.setFont(new Font("Tahoma", Font.BOLD, 25));
-		textSenha.setBounds(792, 383, 564, 50);
+		textSenha.setBounds(792, 383, (int)Math.abs(564*tx), (int)Math.abs(50*ty));
 		contentPane.add(textSenha);
-		btnLogin.setBounds(792, 523, 564, 76);
+		btnLogin.setBounds(792, 523, (int)Math.abs(564*tx), (int)Math.abs(76*ty));
 		contentPane.add(btnLogin);
 		
 		JButton btnSair = new JButton("");
@@ -139,11 +142,11 @@ public class LoginForm extends JFrame {
 			}
 		});
 		btnSair.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnSair.setBounds(1330, 5, 41, 44);
+		btnSair.setBounds(1330, 5, (int)Math.abs(41*tx), (int)Math.abs(44*ty));
 		contentPane.add(btnSair);
 		
 		JButton btnMinimizar = new JButton("");
-		btnMinimizar.setBounds(1268, 5, 41, 44);
+		btnMinimizar.setBounds(1268, 5, (int)Math.abs(41*tx), (int)Math.abs(44*ty));
 		btnMinimizar.setOpaque(false);
 		btnMinimizar.setContentAreaFilled(false);
 		btnMinimizar.setBorderPainted(false);
@@ -156,7 +159,7 @@ public class LoginForm extends JFrame {
 		});
 		JLabel Imagem = new JLabel("");
 		Imagem.setIcon(new ImageIcon(path));
-		Imagem.setBounds(0, 0, 1384, 761);
+		Imagem.setBounds(0, 0, (int)Math.abs(1384*tx), (int)Math.abs(761*ty));
 		contentPane.add(Imagem);
 	
 		compCoords = null;
