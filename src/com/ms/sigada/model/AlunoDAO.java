@@ -55,7 +55,7 @@ public class AlunoDAO {
 	}
 	
 
-	public String remover( int ID ) {
+	public static Boolean remover( int ID ) {
 		Map<Integer, Aluno> map = new TreeMap<>();
 		try {
 			map = AlunoDAO.leAlunos(path);
@@ -68,7 +68,7 @@ public class AlunoDAO {
 		
 		AlunoDAO.salvar(map);
 		System.out.println( "Removido" );
-		return "./WEB-INF/ok.jsp";
+		return true;
 	}
 
 	
